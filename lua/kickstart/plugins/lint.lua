@@ -5,10 +5,14 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
-      --lint.linters_by_ft = {
-      --  markdown = { 'markdownlint' },
-      --}
-      lint.linters_by_ft['markdown'] = nil
+      lint.linters_by_ft = {
+        markdown = { 'markdownlint' },
+        cpp = { 'cpplint' },
+        c = { 'cpplint' },
+        javascript = { 'eslint_d' },
+        text = { 'vale' },
+        typescript = { 'eslint_d' },
+      }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
