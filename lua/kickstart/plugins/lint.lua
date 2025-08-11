@@ -9,6 +9,7 @@ return {
         markdown = { 'markdownlint' },
         cpp = { 'cpplint' },
         c = { 'cpplint' },
+        java = { 'trivy' },
         javascript = { 'eslint_d' },
         text = { 'vale' },
         typescript = { 'eslint_d' },

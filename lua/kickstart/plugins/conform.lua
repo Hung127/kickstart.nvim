@@ -39,6 +39,7 @@ return {
         html = { 'prettier', 'prettierd', stop_after_first = true },
         ts = { 'prettier', 'prettierd', stop_after_first = true },
         tsx = { 'prettier', 'prettierd', stop_after_first = true },
+        java = { 'clang-format' },
       },
     },
   },
