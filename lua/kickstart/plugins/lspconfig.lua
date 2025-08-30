@@ -209,6 +209,21 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
+          cmd = {
+            'clangd',
+            '--background-index',
+            '--clang-tidy',
+            '--header-insertion=iwyu',
+            '--completion-style=detailed',
+            '--function-arg-placeholders',
+            '--fallback-style=llvm',
+          },
+          init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
+            clangdFileStatus = true,
+            fallbackFlags = { '-std=c++17' },
+          },
           settings = {},
         },
         marksman = {},
