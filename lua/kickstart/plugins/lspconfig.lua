@@ -1,17 +1,17 @@
 return {
-  -- LSP Plugins
-  {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        -- Load luvit types when the `vim.uv` word is found
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+    -- LSP Plugins
+    {
+      -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+      -- used for completion, annotations and signatures of Neovim apis
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      opts = {
+        library = {
+          -- Load luvit types when the `vim.uv` word is found
+          { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        },
       },
     },
-  },
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
@@ -228,7 +228,53 @@ return {
         },
         marksman = {},
         pyright = {},
-        jdtls = {},
+        jdtls = {
+          cmd = {
+            'jdtls',
+
+            -- JVM optimizations for faster startup
+            '-J-Xms128m',
+            '-J-Xmx1G',
+            '-J-XX:+UseG1GC',
+            '-J-XX:+UseStringDeduplication',
+            '-J-Djava.awt.headless=true',
+            '-J-Dfile.encoding=UTF-8',
+            '-J-Dlog.level=ERROR',
+
+            -- Workspace
+            '-data',
+            vim.fn.stdpath 'cache' .. '/jdtls-workspace/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t'),
+          },
+
+          settings = {
+            java = {
+              eclipse = {
+                downloadSources = false, -- Faster startup
+              },
+              maven = {
+                downloadSources = false,
+              },
+              references = {
+                includeDecompiledSources = false,
+              },
+              configuration = {
+                updateBuildConfiguration = 'interactive',
+              },
+              format = {
+                enabled = true,
+              },
+              codeGeneration = {
+                useBlocks = true,
+              },
+            },
+          },
+
+          init_options = {
+            extendedClientCapabilities = {
+              progressReportProvider = false, -- Disable for faster startup
+            },
+          },
+        },
         -- gopls = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
