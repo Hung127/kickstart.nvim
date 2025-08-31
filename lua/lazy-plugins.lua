@@ -14,34 +14,19 @@ require('lazy').setup({
   -- include a plugin definition from file lua/path/name.lua
 
   require 'kickstart.plugins.autopairs',
-
   require 'kickstart.plugins.gitsigns',
-
   require 'kickstart.plugins.which-key',
-
   require 'kickstart.plugins.telescope',
-
   require 'kickstart.plugins.lspconfig',
-
   require 'kickstart.plugins.conform',
-
   require 'kickstart.plugins.neo-tree',
-
   require 'kickstart.plugins.blink-cmp',
-
   require 'kickstart.plugins.catppuccin',
-
   require 'kickstart.plugins.todo-comments',
-
   require 'kickstart.plugins.mini',
-
   require 'kickstart.plugins.treesitter',
-
   require 'kickstart.plugins.lint',
-
   require 'kickstart.plugins.nvim-ts-autotag',
-
-  require 'kickstart.plugins.es7',
 
   -- require 'kickstart.plugins.jdtls',
 

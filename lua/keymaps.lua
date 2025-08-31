@@ -5,8 +5,11 @@
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Back to Explore quickly when press <leader>E in normal mode
-vim.keymap.set('n', '<leader>E', '<cmd>Explore<CR>')
+-- Make Tab to nothing in normal mode
+vim.keymap.set('n', '<Tab>', '')
+
+-- Write to file
+vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = '[W]rite to current file' })
 
 -- Show full error, warning, etc... in normal mode
 vim.keymap.set('n', '<leader>e', function()
